@@ -11,33 +11,15 @@ import java.io.IOException;
 
 public class DynamicGenerator {
     public static void main(String[] args) throws IOException, TemplateException {
-        /**
-         * 加载模板
-         */
-        // configuration是Freemarker的类
-        Configuration configuration = new Configuration(Configuration.VERSION_2_3_32);
-        // 指定路径
-        configuration.setDirectoryForTemplateLoading(new File("src/main/resources/templates"));
-        // 设置模板文件使用的字符集
-        configuration.setDefaultEncoding("utf-8");
-        // 创建模板对象，加载指定模板
-        Template template = configuration.getTemplate("MainTemplate.java.ftl");
 
-        /**
-         * 创建数据模型
-         */
+        String projectPath = System.getProperty("user.dir");
+        String inputPath = projectPath + File.separator + "src/main/resources/templates/MainTemplate.java.ftl";
+        String outputPath = projectPath + File.separator + "MainTemplate.java";
         MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
         mainTemplateConfig.setLoop(false);
-        mainTemplateConfig.setAuthor("yupi");
-        mainTemplateConfig.setOutputText("求和结果");
-
-        /**
-         * 生成
-         */
-        FileWriter fileWriter = new FileWriter("MainTemplate.java");
-        template.process(mainTemplateConfig, fileWriter);
-
-        fileWriter.close();
+        mainTemplateConfig.setAuthor("zhangsan");
+        mainTemplateConfig.setOutputText("求和结果：");
+        doGenerate(inputPath, outputPath, mainTemplateConfig);
 
     }
 
@@ -55,7 +37,6 @@ public class DynamicGenerator {
         // 设置模板文件使用的字符集
         configuration.setDefaultEncoding("utf-8");
         // 创建模板对象，加载指定模板
-
         Template templateName = configuration.getTemplate(
                 new File(inputPath).getName());
 
