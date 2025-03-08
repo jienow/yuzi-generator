@@ -10,5 +10,6 @@ public class Main {
         args = new String[]{"list"};
         CommandExecutor commandExecutor = new CommandExecutor();
         commandExecutor.doExecute(args);
+
     }
 }
