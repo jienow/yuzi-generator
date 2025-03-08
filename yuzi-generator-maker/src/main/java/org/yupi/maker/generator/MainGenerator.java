@@ -1,18 +1,13 @@
 package org.yupi.maker.generator;
 
-import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.io.resource.ClassPathResource;
-import cn.hutool.core.util.StrUtil;
 import freemarker.template.TemplateException;
-import org.yupi.maker.meta.Meta;
-import org.yupi.maker.meta.MetaManager;
 
 import java.io.File;
 import java.io.IOException;
 
 public class MainGenerator {
 
-    public static void doGenerator(Object model) throws TemplateException, IOException {
+    public static void doGenerate(Object model) throws TemplateException, IOException {
         /**
          * 静态代码生成
          */
@@ -23,7 +18,7 @@ public class MainGenerator {
         String inputPath = new File(parentFile, "yuzi-generator-demo-project/acm-template").getAbsolutePath();
         // 输出路径：直接输出到项目的根目录
         String outputPath = projectPath;
-        StaticFileGenerator.copyFilesByHutool(inputPath, outputPath);
+        StaticGenerator.copyFilesByHutool(inputPath, outputPath);
 
         /**
          * 动态代码生成
@@ -33,7 +28,7 @@ public class MainGenerator {
         String DynamicOutputPath = DynamicProjectPath + File.separator+ "acm-template" + File.separator + "src/com/yupi/acm/MainTemplate.java";
 
 
-        DynamicFileGenerator.doGenerate(DynamicInputPath,DynamicOutputPath,model);
+        DynamicGenerator.doGenerate(DynamicInputPath,DynamicOutputPath,model);
 
     }
 

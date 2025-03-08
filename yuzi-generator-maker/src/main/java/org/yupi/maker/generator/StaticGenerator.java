@@ -2,7 +2,7 @@ package org.yupi.maker.generator;
 
 import cn.hutool.core.io.FileUtil;
 
-public class StaticFileGenerator {
+public class StaticGenerator {
     public static void copyFilesByHutool(String inputPath, String outputPath) {
         FileUtil.copy(inputPath, outputPath, false);
     }

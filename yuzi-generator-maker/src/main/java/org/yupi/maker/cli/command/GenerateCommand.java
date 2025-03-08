@@ -9,7 +9,7 @@ import picocli.CommandLine.Command;
 
 import java.io.IOException;
 
-import static org.yupi.maker.generator.MainGenerator.doGenerator;
+import static org.yupi.maker.generator.MainGenerator.doGenerate;
 
 @Command(
         name = "generate",
@@ -31,7 +31,7 @@ public class GenerateCommand implements Runnable {
         BeanUtil.copyProperties(this, dataModel);
         System.out.println("配置信息：" + dataModel);
         try {
-            doGenerator(dataModel);
+            doGenerate(dataModel);
         } catch (TemplateException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
