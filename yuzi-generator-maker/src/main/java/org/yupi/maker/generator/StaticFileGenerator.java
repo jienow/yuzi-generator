@@ -1,8 +1,6 @@
-package org.yupi.maker.generator.file;
+package org.yupi.maker.generator;
 
 import cn.hutool.core.io.FileUtil;
-
-import java.io.File;
 
 public class StaticFileGenerator {
     public static void copyFilesByHutool(String inputPath, String outputPath) {

@@ -1,15 +1,15 @@
-package org.yupi.maker.generator.file;
+package org.yupi.maker.generator;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.yupi.maker.model.DataModel;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class DynamicFileGenerator {
+
     /**
      *
      */

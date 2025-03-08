@@ -3,12 +3,13 @@ package org.yupi.maker.cli.command;
 import cn.hutool.core.bean.BeanUtil;
 import freemarker.template.TemplateException;
 import lombok.Data;
-import org.yupi.maker.generator.file.FileGenerator;
 import org.yupi.maker.model.DataModel;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
 import java.io.IOException;
+
+import static org.yupi.maker.generator.MainGenerator.doGenerator;
 
 @Command(
         name = "generate",
@@ -30,7 +31,7 @@ public class GenerateCommand implements Runnable {
         BeanUtil.copyProperties(this, dataModel);
         System.out.println("配置信息：" + dataModel);
         try {
-            FileGenerator.doGenerator(dataModel);
+            doGenerator(dataModel);
         } catch (TemplateException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
