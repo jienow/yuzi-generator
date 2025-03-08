@@ -27,6 +27,11 @@ public class DynamicFileGenerator {
         Template templateName = configuration.getTemplate(
                 new File(inputPath).getName());
 
+        File file = new File(outputPath);
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
+
         // 加载数据模型，直接使用outputPath
         FileWriter fileWriter = new FileWriter(outputPath);
         templateName.process(model, fileWriter);

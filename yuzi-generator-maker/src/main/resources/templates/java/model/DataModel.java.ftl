@@ -3,18 +3,17 @@ package ${basePackage}.model;
 import lombok.Data;
 
 /**
- * 数据模型
- */
+* 数据模型
+*/
 @Data
 public class DataModel {
 <#list modelConfig.models as modelInfo>
 
-    <#if modelInfo.description>
-    /**
-     * 是否产生循环
-     */
+    <#if modelInfo.description??>
+        /**
+        * ${modelInfo.description}
+        */
     </#if>
-
-    private boolean loop;
+    private ${modelInfo.type} ${modelInfo.fieldName}<#if modelInfo.defaultValue??> = ${modelInfo.defaultValue?c}</#if>;
 </#list>
 }
